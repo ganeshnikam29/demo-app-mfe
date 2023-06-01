@@ -15,7 +15,7 @@ const prodConfig = {
     new ModuleFedrationPlugin({
         name: 'container',
         remotes: {
-          marketing: `marketing@http://${productionDomain}/remoteEntry.js`
+          marketing: `marketing@${productionDomain}/remoteEntry.js`
         },
         shared: packageJson.dependencies, // Let webpack manage the shared module for you
     }),
