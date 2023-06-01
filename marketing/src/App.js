@@ -6,16 +6,18 @@ import { StylesProvider, createGenerateClassName } from "@material-ui/core/style
 import Landing from "./components/Landing";
 import Pricing from "./components/Pricing";
 
-// const generateClassName = createGenerateClassName({
-//   productionPrefix: 'ma',
+
+// CSS-IN-JS will generate class with this prefix
+const generateClassName = createGenerateClassName({
+  productionPrefix: 'ma',
   
-// })
+})
 
 
 export const App = () => {
   return (
     <>
-      <StylesProvider>
+      <StylesProvider generateClassName={generateClassName}>
         <BrowserRouter>
           <Switch>
             <Route exact path="/pricing" component={Pricing} />
