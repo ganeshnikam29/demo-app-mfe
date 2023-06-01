@@ -1,0 +1,23 @@
+const { merge } = require('webpack-merge');
+const ModuleFedrationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+const commonConfig = require('./webpack.common');
+const packageJson = require('../package.json')
+
+const devConfig = {
+  mode: 'development',
+  devServer: {
+    port: 8080,
+    historyApiFallback: true
+  },
+  plugins: [
+    new ModuleFedrationPlugin({
+        name: 'container',
+        remotes: {
+          marketing: 'marketing@http://localhost:8081/remoteEntry.js'
+        },
+        shared: packageJson.dependencies, // Let webpack manage the shared module for you
+    }),
+  ],
+};
+
+module.exports = merge(commonConfig, devConfig);
