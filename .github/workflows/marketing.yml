@@ -1,4 +1,4 @@
-name: 'deploy-container'
+name: deploy-marketing
 
 on:
   push:
@@ -7,20 +7,18 @@ on:
     paths:
       - "marketing/**"
 
-
 defaults:
   run:
     working-directory: marketing
-
 
 jobs:
   build:
     runs-on: macos-latest
 
     steps:
-      - uses: actions@checkout@v2
+      - uses: actions/checkout@v2
       - run: npm install
-      - run: npm run build 
+      - run: npm run build
         env:
           PRODUCTION_DOMAIN: ${{ secrets.PRODUCTION_DOMAIN }}
 

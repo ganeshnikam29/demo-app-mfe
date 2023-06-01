@@ -1,4 +1,4 @@
-name: 'deploy-container'
+name: deploy-container
 
 on:
   push:
@@ -6,7 +6,6 @@ on:
       - master
     paths:
       - "container/**"
-
 
 defaults:
   run:
@@ -17,9 +16,9 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      - uses: actions@checkout@v2
+      - uses: actions/checkout@v2
       - run: npm install
-      - run: npm run build 
+      - run: npm run build
         env:
           PRODUCTION_DOMAIN: ${{ secrets.PRODUCTION_DOMAIN }}
 
@@ -30,3 +29,4 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: ap-south-1
           AWS_S3_BUCKET_NAME: ${{ secrets.AWS_S3_BUCKET_NAME }}
+  
