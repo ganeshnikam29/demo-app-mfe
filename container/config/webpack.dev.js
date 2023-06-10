@@ -5,6 +5,9 @@ const packageJson = require('../package.json')
 
 const devConfig = {
   mode: 'development',
+  output: {
+    publicPath: 'http://localhost:8080/',
+  },
   devServer: {
     port: 8080,
     historyApiFallback: true
@@ -13,7 +16,8 @@ const devConfig = {
     new ModuleFedrationPlugin({
         name: 'container',
         remotes: {
-          marketing: 'marketing@http://localhost:8081/remoteEntry.js'
+          marketing: 'marketing@http://localhost:8081/remoteEntry.js',
+          authentication:'auth@http://localhost:8082/remoteEntry.js'
         },
         shared: packageJson.dependencies, // Let webpack manage the shared module for you
     }),
