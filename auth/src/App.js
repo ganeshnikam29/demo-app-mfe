@@ -9,7 +9,7 @@ import SignUp from "./components/Signup";
 
 // CSS-IN-JS will generate class with this prefix
 const generateClassName = createGenerateClassName({
-  productionPrefix: 'auth',
+  productionPrefix: 'au',
   
 })
 
