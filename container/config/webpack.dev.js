@@ -12,12 +12,14 @@ const devConfig = {
     port: 8080,
     historyApiFallback: true
   },
+  devtool: 'source-map',
   plugins: [
     new ModuleFedrationPlugin({
         name: 'container',
         remotes: {
           marketing: 'marketing@http://localhost:8081/remoteEntry.js',
-          authentication:'auth@http://localhost:8082/remoteEntry.js'
+          authentication:'auth@http://localhost:8082/remoteEntry.js',
+          dashboard: "dashboard@http://localhost:8083/remoteEntry.js"
         },
         shared: packageJson.dependencies, // Let webpack manage the shared module for you
     }),
